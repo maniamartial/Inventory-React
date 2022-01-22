@@ -1,7 +1,78 @@
 import "./App.css";
 import Info from "./Info.js";
-import { PropTypes } from "prop-types";
+//import { PropTypes } from "prop-types";
+import { useState } from "react";
 
+function App() {
+  return (
+    <div className="App">
+      <Info />
+
+      <ButtonState></ButtonState>
+      <Example />
+    </div>
+  );
+}
+
+//State management
+function ButtonState() {
+  const [title, setTitle] = useState("");
+  const [count, setCount] = useState(0);
+
+  const updateTitleClicked = () => {
+    setTitle("We are coming home baiby");
+  };
+
+  const updateCounterClicked = () => {
+    setCount(count + 1);
+  };
+
+  return (
+    <div>
+      <Data title={title} count={count} />
+
+      <button onClick={updateTitleClicked}>Update Title</button>
+      <button onClick={updateCounterClicked}>Update Counter</button>
+    </div>
+  );
+}
+
+function Data(props) {
+  return (
+    <div>
+      <p>Title:{props.title}</p>
+      <p>Count: {props.count}</p>
+    </div>
+  );
+}
+
+Data.defaultProps = {
+  title: "Kumbafu",
+  count: 2,
+};
+
+ButtonState.protyTypes = {};
+//Mine
+function Example() {
+  const [num, setNumber] = useState(0);
+  const [fruit, setFruit] = useState("Ovacado");
+
+  const updateNumber = () => {
+    setNumber(num + 1);
+  };
+
+  return (
+    <div>
+      <p>Number: {num}</p>
+      <p>Fruit:{fruit}</p>
+      <button onClick={updateNumber}>Update Number</button>
+      <button onClick={() => setFruit("Mayai")}>Update Fruit</button>
+    </div>
+  );
+}
+
+export default App;
+/*
 function App() {
   return (
     <div className="App">
@@ -18,7 +89,7 @@ function App() {
 //function AddItem({text, number}){
 //const value=text;
 //}
-
+/*
 function AddItem(props) {
   const value = props.text;
   return (
