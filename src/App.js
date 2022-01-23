@@ -1,8 +1,33 @@
 import "./App.css";
-import Info from "./Info.js";
+//import Info from "./Info.js";
 //import { PropTypes } from "prop-types";
 import { useState } from "react";
+import SearchBar from "./searchBar";
+function App() {
+  const [data, setData] = useState({});
 
+  const updateData = (searchParams) => {
+    setData(searchParams);
+  };
+
+  return (
+    <div className="App">
+      <SearchBar callback={updateData} />
+
+      <p>Name: {"name" in data ? data["name"] : "No Name to display"}</p>
+      <p>
+        Price: {"maxprice" in data ? data["maxprice"] : "No price to display"}
+      </p>
+      <p>Type: {"type" in data ? data["type"] : "No type to display"}</p>
+      <p>Brand: {"brand" in data ? data["brand"] : "No brand to display"}</p>
+    </div>
+  );
+}
+
+export default App;
+
+//Use State Over
+/*
 function App() {
   return (
     <div className="App">
