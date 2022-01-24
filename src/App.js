@@ -1,7 +1,39 @@
 import "./App.css";
+
+//Displaying data dynamically
+import { useState } from "react";
+import SearchBar from "./searchBar";
+import AddItem from "./addItem";
+import ItemDisplay from "./ItemDisplay";
+function App() {
+  const [filters, setFilters] = useState({});
+  const [data, setData] = useState({ items: [] });
+  const updateFilters = (searchParams) => {
+    setFilters(searchParams);
+  };
+
+  const addItemToData = (item) => {
+    let items = data["items"];
+    item.id = items.length;
+    items.push(item);
+    setData({ items: items });
+    console.log(data);
+  };
+
+  return (
+    <div className="App">
+      <SearchBar updateSearchParams={updateFilters} />
+      <ItemDisplay items={data["items"]} />
+      <AddItem addItem={addItemToData} />
+    </div>
+  );
+}
+
+export default App;
+
 //import Info from "./Info.js";
 //import { PropTypes } from "prop-types";
-import { useState } from "react";
+/*import { useState } from "react";
 import SearchBar from "./searchBar";
 function App() {
   const [data, setData] = useState({});
