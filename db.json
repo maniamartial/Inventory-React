@@ -1,0 +1,25 @@
+{
+  "items": [
+    {
+      "name": "mania",
+      "maxprice": "0768",
+      "type": "Obtuse",
+      "brand": "ok",
+      "id": 1
+    },
+    {
+      "name": "Melan",
+      "maxprice": "89",
+      "type": "Kolimo",
+      "brand": "Baracuda",
+      "id": 2
+    },
+    {
+      "name": "Megan the Stalion",
+      "maxprice": "123456",
+      "type": "Mboko haramu",
+      "brand": "Sikudai",
+      "id": 3
+    }
+  ]
+}
