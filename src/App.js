@@ -1,10 +1,16 @@
 import "./App.css";
-
+import styled from "styled-components";
 //Displaying data dynamically
 import { useState } from "react";
 import SearchBar from "./searchBar";
 import AddItem from "./addItem";
 import ItemDisplay from "./ItemDisplay";
+
+//Creating component styling
+const Title = styled.h1`
+  color: ${(props) => (props.color ? props.color : "green")};
+`;
+
 function App() {
   const [filters, setFilters] = useState({});
   const [data, setData] = useState({ items: [] });
@@ -20,11 +26,52 @@ function App() {
     console.log(data);
   };
 
+  const filterData = (data) => {
+    const filteredData = [];
+
+    if (!filters.name) {
+      return data;
+    }
+
+    for (const item of data) {
+      //console.log(filters);
+      if (filters.name !== " " && item.name !== filters.name) {
+        continue;
+      }
+
+      if (filters.price !== "" && item.name !== filters.price) {
+        continue;
+      }
+
+      if (filters.type !== "" && item.type !== filters.type) {
+        continue;
+      }
+
+      if (filters.brand !== "" && item.brand !== filters.brand) {
+        continue;
+      }
+      filteredData.push(item);
+    }
+    return filteredData;
+  };
+
   return (
-    <div className="App">
-      <SearchBar updateSearchParams={updateFilters} />
-      <ItemDisplay items={data["items"]} />
-      <AddItem addItem={addItemToData} />
+    <div className="container">
+      <div className="row mt-3" style={{}}>
+        <Title>Relax am feeling njaa BUANA</Title>
+      </div>
+
+      <div className="row mt-3" style={{ color: "red" }}>
+        <ItemDisplay items={filterData(data["items"])} />
+      </div>
+
+      <div className="row mt-3" style={{}}>
+        <SearchBar updateSearchParams={updateFilters} />
+      </div>
+
+      <div className="row mt-3" style={{}}>
+        <AddItem addItem={addItemToData} />
+      </div>
     </div>
   );
 }
