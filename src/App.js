@@ -1,10 +1,11 @@
 import "./App.css";
 import styled from "styled-components";
 //Displaying data dynamically
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import SearchBar from "./searchBar";
 import AddItem from "./addItem";
 import ItemDisplay from "./ItemDisplay";
+import Test from "./Class";
 
 //Creating component styling
 const Title = styled.h1`
@@ -14,6 +15,24 @@ const Title = styled.h1`
 function App() {
   const [filters, setFilters] = useState({});
   const [data, setData] = useState({ items: [] });
+  const [showTest, setShowTest] = useState(true);
+
+  useEffect(() => {
+    fetch("http://localhost:3000/items")
+      .then((response) => response.json())
+      .then((data) => setData({ items: data }));
+  }, []);
+  useEffect(() => {
+    console.log("use Effect");
+    return () => {
+      console.log("cleanup");
+    };
+  }, [data, filters]);
+
+  //U ca use alot of use effects with different functionalities
+  useEffect(() => {
+    console.log("second fucks ");
+  });
   const updateFilters = (searchParams) => {
     setFilters(searchParams);
   };
@@ -84,6 +103,9 @@ function App() {
 
       <div className="row mt-3" style={{}}>
         <AddItem addItem={addItemToData} />
+      </div>
+      <div className="row mt-3" style={{}}>
+        {showTest ? <Test destroy={setShowTest} /> : null}
       </div>
     </div>
   );
