@@ -1,0 +1,18 @@
+{
+  "items": [
+    {
+      "name": "Megan the Stalion",
+      "maxprice": "123456",
+      "type": "Mboko haramu",
+      "brand": "Sikudai",
+      "id": 3
+    },
+    {
+      "name": "We want you to genneray yo own data",
+      "maxprice": "078",
+      "type": "Ok its fine",
+      "brand": "Right",
+      "id": 6
+    }
+  ]
+}
