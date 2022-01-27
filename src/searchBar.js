@@ -16,7 +16,7 @@ function SearchBar(props) {
     alert("relax");
   };
   return (
-    <div className="cntainer">
+    <div className="container">
       <div className="row">
         <h2 className="red">Search for any item</h2>
       </div>

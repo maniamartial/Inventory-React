@@ -21,7 +21,9 @@ function App() {
     fetch("http://localhost:3000/items")
       .then((response) => response.json())
       .then((data) => setData({ items: data }));
+    console.log("Data fuck off");
   }, []);
+
   useEffect(() => {
     console.log("use Effect");
     return () => {
@@ -29,7 +31,7 @@ function App() {
     };
   }, [data, filters]);
 
-  //U ca use alot of use effects with different functionalities
+  //U can use alot of use effects with different functionalities
   useEffect(() => {
     console.log("second fucks ");
   });
@@ -37,9 +39,24 @@ function App() {
     setFilters(searchParams);
   };
 
+  const deleteItem = (item) => {
+    const items = data["items"];
+    const requestOptions = {
+      method: "DELETE",
+    };
+    fetch(`http://localhost:3000/items/${item.id}`, requestOptions).then(
+      (response) => {
+        if (response.ok) {
+          const idx = items.indexOf(item);
+          items.splice(idx, 1);
+          setData({ items: items });
+        }
+      }
+    );
+  };
   const addItemToData = (item) => {
     let items = data["items"];
-    item.id = items.length;
+    //item.id = items.length;
 
     const requestOptions = {
       method: "POST",
@@ -94,7 +111,10 @@ function App() {
       </div>
 
       <div className="row mt-3" style={{ color: "red" }}>
-        <ItemDisplay items={filterData(data["items"])} />
+        <ItemDisplay
+          deleteItem={deleteItem}
+          items={filterData(data["items"])}
+        />
       </div>
 
       <div className="row mt-3" style={{}}>

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import styles from "./AddItem.module.css";
+
 function AddItem(props) {
   const [name, setName] = useState("");
   const [maxprice, setMaxPrice] = useState(0);

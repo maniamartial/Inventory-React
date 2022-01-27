@@ -1,20 +1,6 @@
 {
   "items": [
     {
-      "name": "mania",
-      "maxprice": "0768",
-      "type": "Obtuse",
-      "brand": "ok",
-      "id": 1
-    },
-    {
-      "name": "Melan",
-      "maxprice": "89",
-      "type": "Kolimo",
-      "brand": "Baracuda",
-      "id": 2
-    },
-    {
       "name": "Megan the Stalion",
       "maxprice": "123456",
       "type": "Mboko haramu",
@@ -22,24 +8,10 @@
       "id": 3
     },
     {
-      "name": "",
-      "maxprice": "",
-      "type": "",
-      "brand": "",
-      "id": 4
-    },
-    {
-      "name": "",
-      "maxprice": "",
-      "type": "",
-      "brand": "",
-      "id": 5
-    },
-    {
-      "name": "",
-      "maxprice": "",
-      "type": "",
-      "brand": "",
+      "name": "We want you to genneray yo own data",
+      "maxprice": "078",
+      "type": "Ok its fine",
+      "brand": "Right",
       "id": 6
     }
   ]
